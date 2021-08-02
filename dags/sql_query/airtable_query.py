@@ -7,6 +7,7 @@ COPY {}
 FROM '{}'
 ACCESS_KEY_ID '{{}}'
 SECRET_ACCESS_KEY '{{}}'
+REGION 'eu-west-1'
 json 'auto';
 COMMIT;
 """
@@ -38,7 +39,7 @@ COMMIT;
 
 copy_all_web_sql = COPY_SQL.format(
     "web_events",
-    "s3://luko-kenhung/web_events"
+    "s3://luko-data-eng-exercice/hung/web_events"
 )
 
 
@@ -64,7 +65,7 @@ COMMIT;
 
 copy_all_app_sql = COPY_SQL.format(
     "app_events",
-    "s3://luko-kenhung/app_events"
+    "s3://luko-data-eng-exercice/hung/app_events"
 )
 
 
