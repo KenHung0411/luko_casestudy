@@ -1,0 +1,41 @@
+version: '3.5'
+services:
+  postgres:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=airflow
+    ports:
+      - 5432:5432
+######################################################
+# AIRFLOW
+######################################################
+  webserver:
+    build: ./docker
+    restart: always
+    container_name: luko-docker-airflow
+    volumes:
+      - ./dags:/usr/local/airflow/dags
+      - ./docker/config/airflow.cfg:/usr/local/airflow/airflow.cfg
+      - ./docker/config/setting.conf:/usr/local/airflow/setting.conf
+      - ./temp_app:/usr/local/airflow/temp_app
+      - ./temp_web:/usr/local/airflow/temp_web
+      - ./docker/airtable_get.py:/usr/local/airflow/airtable_get.py
+    environment:
+      - EXCUTOR=Local
+      - FERNET_KEY=GwFUh3NzF3JnBwYPoI3EYX0pn1IzVcZLHjkHnpcZyK4=
+      - AWS_DEFAULT_REGION=us-west-2
+      - AWS_ACCESS_KEY_ID=your_access_key_id
+      - AWS_SECRET_ACCESS_KEY=your_secret_access_key
+    depends_on:
+        - postgres
+    ports:
+      - 8080:8080
+    # Run this manully
+    # docker exec -it 875ac7c752dc /bin/bash /usr/local/airflow/airflow_parameters_setting.sh
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "airflow", "8080" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10

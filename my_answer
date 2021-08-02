@@ -1,0 +1,25 @@
+1. What do you think are the current painpoints of the current system?
+    - no MR/PR process. (better need a code review process maker sure everyone in the same page).
+    - Fivetran, dbt needs a tools like airflow to certralized it would be eaiser to management. 
+    - static data on google sheets is bad ... in the last data either become a mess or no one want to touch it.
+    - We have 20+ pipelines that were homemade in Lambda as they wouldn't fit into Fivetran > lambda have limitation be careful the timeout...
+    - Why use redshift when you have snowflake already? (cost, cost, cost)
+    - gigantic pipeline. Again with airflow it will be eaiser to split your env ex: airflow_prod, airflow_dev ...
+
+2. What would you change (in the org, the processes, the tech, etc.), and why (please give a sense of priority)?
+    - Implement the tool for workflow management
+    - Mabye just s3 or redshift or snowflake
+    - Implement a code review process in the team
+
+3. Please tell us about a time you had to implement a data pipelines?
+    - It really depends on the complexity of the pipelines so don't really have an answer.
+    - Furthermore in my previous experience data pipelines are involved through time so hard to say...
+
+
+4. What do you have to you say about data quality?
+    - It's everyone's job not just data enginner's job. 
+    - As data enginner my job is to corrdinate with others and make sure all the data is trust worthy for users.
+
+
+
+
