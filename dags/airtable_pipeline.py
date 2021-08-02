@@ -36,9 +36,6 @@ config.read('/usr/local/airflow/setting.conf')
 os.environ["AWS_ACCESS_KEY_ID"] =  config['DEFAULT']["AWS_ACCESS_KEY"]
 os.environ["AWS_SECRET_ACCESS_KEY"] = config['DEFAULT']["AWS_SECRET_KEY"]
 os.environ["AWS_DEFAULT_REGION"] = config['DEFAULT']["AWS_DEFAULT_REGION"]
-warehouse_host = config['DEFAULT']["WAREHOUSE_HOST"]
-warehouse_account = config['DEFAULT']["WHAREHOUSE_ACCOUNT"]
-warehouse_password = config['DEFAULT']["WAREHOUSE_PASSWORD"]
 api_key = "Bearer {}".format(config["DEFAULT"]["AIRTABLE_KEY"])
 
 
